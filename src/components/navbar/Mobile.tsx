@@ -16,17 +16,20 @@ export const MobileNavbar = ({ links }: MobileNavbarProps) => {
       {({ open }) => (
         <div>
           <header>
-            <div className="flex items-center justify-between p-6">
+            <div className="flex flex-col items-center justify-between p-4 sm:flex-row sm:p-6">
               <section>
-                <Link to="/" className="flex cursor-pointer items-center">
-                  <UserGroupIcon className="mr-4 size-12" />
-                  <h1 className="text-xl font-bold">
+                <Link
+                  to="/"
+                  className="flex cursor-pointer flex-col items-center sm:flex-row"
+                >
+                  <UserGroupIcon className="mb-2 size-8 sm:mr-4 sm:mb-0 sm:size-12" />
+                  <h1 className="text-center text-lg font-bold sm:text-xl">
                     Powered by Dahnoun Holdings
                   </h1>
                 </Link>
               </section>
 
-              <div className="flex items-center lg:hidden">
+              <div className="mt-2 flex items-center sm:mt-0 lg:hidden">
                 <DisclosureButton>
                   {open ? (
                     <XMarkIcon className="size-6" />

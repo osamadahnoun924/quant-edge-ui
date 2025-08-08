@@ -12,10 +12,10 @@ const links = [
 export const Navbar = () => {
   return (
     <>
-      <div className="lg:hidden">
+      <div className="md:hidden">
         <MobileNavbar links={links} />
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <DesktopNavbar links={links} />
       </div>
     </>
