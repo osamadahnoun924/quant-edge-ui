@@ -1,6 +1,6 @@
 {
   "name": "quant-edge",
-  "homepage": "https://osamadahnoun924.github.io/quant-edge-ui/",
+  "homepage": "https://osamadahnoun924.github.io/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r git@github.com:osamadahnoun924/osamadahnoun924.github.io.git"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
