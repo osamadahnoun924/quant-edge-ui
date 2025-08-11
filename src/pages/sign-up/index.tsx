@@ -4,7 +4,7 @@ import { Button } from '@headlessui/react';
 import { useAuth } from '../../contexts/AuthContext';
 import * as Yup from 'yup';
 
-export const Login = () => {
+export const SignUp = () => {
   const { signup, currentUser } = useAuth();
 
   return (

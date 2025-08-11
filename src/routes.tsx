@@ -4,24 +4,39 @@ import { MainLayout } from './layouts';
 import { ContactUs } from './pages/contact-us';
 import { About } from './pages/about';
 import { Login } from './pages/log-in';
+import { SignUp } from './pages/sign-up';
+import { Recover } from './pages/recover';
 import { Pricing } from './pages/pricing';
 import { Tutorial } from './pages/tutorial';
 import { StartAnalyzing } from './pages/start-analyzing';
+import { Auth } from './pages/auth';
 
 export const routes: RouteObject[] = [
   {
     element: <MainLayout />,
     children: [
-      { path: '/', element: <Landing /> },
-      { path: '/contact-us', element: <ContactUs /> },
-      { path: '/about', element: <About /> },
-      { path: '/tutorial', element: <Tutorial /> },
-      { path: '/pricing', element: <Pricing /> },
-      { path: '/login', element: <Login /> },
-      { path: '/start-analyzing', element: <StartAnalyzing /> },
+      { index: true, element: <Landing /> },
+      { path: 'about', element: <About /> },
+      { path: 'contact-us', element: <ContactUs /> },
+      { path: 'pricing', element: <Pricing /> },
+
+      {
+        path: 'auth',
+        element: <Auth />,
+        children: [
+          { index: true, element: <Navigate to="log-in" /> },
+          { path: 'log-in', element: <Login /> },
+          { path: 'recover', element: <Recover /> },
+          { path: 'sign-up', element: <SignUp /> },
+        ],
+      },
+
+      { path: 'start-analyzing', element: <StartAnalyzing /> },
+      { path: 'tutorial', element: <Tutorial /> },
+
       {
         path: '*',
-        element: <Navigate to="/" />,
+        element: <Navigate to="/" replace />,
       },
     ],
   },
