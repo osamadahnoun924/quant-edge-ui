@@ -26,7 +26,7 @@ export const Landing = () => {
         </section>
       </section>
       <section className="text-center">
-        <img src={img} alt="" />
+        <img src={img} alt="" className="mx-auto pt-8 pb-2 lg:pt-0 lg:pb-0" />
         <p className="mt-4 text-sm sm:text-xl">
           Bringing instituitonal-grade analytics to retail investors
         </p>
