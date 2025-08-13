@@ -1,0 +1,19 @@
+name: Notify Backend on Frontend Update
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch: {}
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger backend deployment
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.BACKEND_REPO_PAT }}
+          repository: quant-edge-devs/quantedgebackend
+          event-type: frontend_updated
+          client-payload: |
+            { "frontend_ref": "${{ github.sha }}" }
