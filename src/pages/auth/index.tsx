@@ -1,5 +1,5 @@
-import { Login } from '../log-in';
+import { Outlet } from 'react-router';
 
 export const Auth = () => {
-  return <Login />;
+  return <Outlet />;
 };

@@ -1,14 +1,15 @@
-import { Input, Field, Label } from '@headlessui/react';
+import { Input, Field, Label, Button } from '@headlessui/react';
 import { Form, Formik } from 'formik';
-import { Button } from '@headlessui/react';
 import { useAuth } from '../../contexts/AuthContext';
 import * as Yup from 'yup';
+import { Link } from 'react-router';
 
 export const SignUp = () => {
   const { signup, currentUser } = useAuth();
 
   return (
     <div className="mt-10 flex items-center justify-center">
+      <h1>Sign up page</h1>
       <Formik
         initialValues={{ email: '', password: '', passwordConfirmation: '' }}
         validationSchema={Yup.object({
@@ -84,7 +85,9 @@ export const SignUp = () => {
           );
         }}
       </Formik>
-      <p>Already have an account? Login</p>
+      <p>
+        Already have an account? <Link to={'/auth/log-in'}>Login</Link>
+      </p>
     </div>
   );
 };

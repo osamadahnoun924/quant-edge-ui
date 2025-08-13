@@ -3,14 +3,16 @@ import { Form, Formik } from 'formik';
 import { Button } from '@headlessui/react';
 import { useAuth } from '../../contexts/AuthContext';
 import * as Yup from 'yup';
+import { Link } from 'react-router';
 
 export const Login = () => {
-  const { signup, currentUser } = useAuth();
+  const { login, currentUser } = useAuth();
 
   return (
     <div className="mt-10 flex items-center justify-center">
+      <h1>Login page</h1>
       <Formik
-        initialValues={{ email: '', password: '', passwordConfirmation: '' }}
+        initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object({
           email: Yup.string()
             .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, 'Invalid email address')
@@ -18,13 +20,10 @@ export const Login = () => {
           password: Yup.string()
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
-          passwordConfirmation: Yup.string()
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-            .required('Please confirm your password'),
         })}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            await signup(values.email, values.password);
+            await login(values.email, values.password);
           } catch (error) {
           } finally {
             setSubmitting(false);
@@ -62,29 +61,22 @@ export const Login = () => {
                   formik.touched.password &&
                   formik.errors.password}
               </Field>
-              <Field>
-                <Label>Password Confirmation</Label>
-                <Input
-                  name="passwordConfirmation"
-                  type="password"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.passwordConfirmation}
-                />
-                {formik.errors.passwordConfirmation &&
-                  formik.touched.passwordConfirmation &&
-                  formik.errors.passwordConfirmation}
-              </Field>
+
               {formik.isSubmitting ? (
                 <>Submitting...</>
               ) : (
-                <Button type="submit">Sign up</Button>
+                <Button type="submit">Log in</Button>
               )}
             </Form>
           );
         }}
       </Formik>
-      <p>Already have an account? Login</p>
+      <p>
+        Need an account? <Link to="/auth/sign-up">Signup</Link>
+      </p>
+      <p>
+        <Link to="/auth/recover">Forgot password?</Link>
+      </p>
     </div>
   );
 };
