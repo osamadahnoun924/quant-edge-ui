@@ -16,4 +16,4 @@ jobs:
           repository: quant-edge-devs/quantedgebackend
           event-type: frontend_updated
           client-payload: |
-            { "frontend_ref": "${{ github.sha }}" }
+            { "frontend_ref": "main" }
